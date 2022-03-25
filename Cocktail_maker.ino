@@ -1,9 +1,51 @@
+
+#define wait 500 // To prevent overlapping of diaphragm pumps / relays
 int order = 0;
-void setup() {
-  // put your setup code here, to run once:
 
+// diaphragm pumps input for individual ingredients 
+int Vodka_pump = 2;
+int Cranberry_juice_pump = 3;
+int Sprite_pump = 4;
+int Lime_juice_pump = 5;
+int Sugar_water_pump = 6;
+int Gin_pump = 7;
+int White_rum_pump = 8;
+int tequila_pump = 9;
+
+
+
+void setup() 
+{
+
+  Serial.begin(9600); 
+
+  // setup pinmode and relay
+  
+  pinMode(2, OUTPUT); 
+  digitalWrite(2,HIGH);
+  
+  pinMode(3, OUTPUT); 
+  digitalWrite(3,HIGH);
+  
+  pinMode(4, OUTPUT); 
+  digitalWrite(4,HIGH);
+  
+  pinMode(5, OUTPUT); 
+  digitalWrite(5,HIGH);
+  
+  pinMode(6, OUTPUT);
+  digitalWrite(6,HIGH);
+   
+  pinMode(7, OUTPUT); 
+  digitalWrite(7,HIGH);
+  
+  pinMode(8, OUTPUT);
+  digitalWrite(8,HIGH);
+  
+  pinMode(9, OUTPUT); 
+  digitalWrite(9,HIGH);
+ 
 }
-
 void loop() {
 
 if(Serial.available() > 0){ 
