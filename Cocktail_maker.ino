@@ -46,9 +46,11 @@ void setup()
   digitalWrite(9,HIGH);
  
 }
+
 void loop() {
 
 if(Serial.available() > 0){ 
+    Serial.println(" 1:Vodka Sprite /n2:Caproska /n3:Classic Mojito /n4:Cosmopolitan  /n5:Long Island Ice Tea  /n6:light cleaning  /n7:Flush clean");
     order = Serial.read(); // Reads the order from the serial port
     Serial.println(order);
 }
@@ -57,24 +59,33 @@ switch (order)
 {
     case 1: 
              Serial.println("Vodka Sprite in the making");
-           //  Mix(3000,0,5000,0,0,0,0,0); // Vodka, Cranberry juice, Sprite, Lime juice, Sugar water, Gin , White rum , tequila
+             Mix(3000,0,5000,0,0,0,0,0); // Vodka, Cranberry juice, Sprite, Lime juice, Sugar water, Gin , White rum , tequila
         break;
+        
     case 2:  Serial.println("Caproska in the making");
-           //  Mix(3000,0,5000,0,1200,0,0,0);
-    
+             Mix(3000,0,5000,0,1200,0,0,0);
         break;
+        
     case 3:  Serial.println("Classic Mojito in the making");
-           //  Mix(0,0,5000,1800,1200,0,1800,0);
-    
+             Mix(0,0,5000,1800,1200,0,1800,0);
         break;
+        
     case 4:  Serial.println("Cosmopolitan in the making");
-             //Mix(3000,3000,0,1800,0,0,0,0);
-    
+             Mix(3000,3000,0,1800,0,0,0,0);
         break;
+        
     case 5:  Serial.println("Long Island Ice Tea in the making");
-            // Mix(3000,3000,0,1800,0,0,1800,0);
-    
+             Mix(3000,3000,0,1800,0,0,1800,0);
         break;
+        
+    case 6:  Serial.println("light cleaning");
+            Mix(6000,6000,6000,6000,6000,6000,6000,6000);
+        break;
+  
+    case 7:  Serial.println("Flush clean");
+             Mix(8000,8000,8000,8000,8000,8000,8000,8000);
+        break;
+        
     default: Serial.println("Wrong entry");
 }
 
@@ -83,4 +94,55 @@ switch (order)
 
 }
 
-void Mix(int Vodka,int Cranberry_juice,int Sprite,int Lime_juice,int Sugar_water,int Gin ,int White_rum ,int tequila){}
+void Mix(int Pour_Vodka,int Pour_Cranberry_juice,int Pour_Sprite,int Pour_Lime_juice,int Pour_Sugar_water,int Pour_Gin ,int Pour_White_rum ,int Pour_tequila)
+{
+
+  order = 0; // Prevent repeting the same drink 
+  
+  delay(800);
+  digitalWrite(Vodka_pump, LOW);   
+  delay(Pour_Vodka);            
+  digitalWrite(Vodka_pump, HIGH); 
+  delay(wait);    
+
+  digitalWrite(Cranberry_juice_pump, LOW);   
+  delay(Pour_Cranberry_juice);            
+  digitalWrite(Cranberry_juice_pump, HIGH); 
+  delay(wait); 
+
+  digitalWrite(Sprite_pump, LOW);   
+  delay(Pour_Sprite);            
+  digitalWrite(Sprite_pump, HIGH); 
+  delay(wait);
+
+  digitalWrite(Lime_juice_pump, LOW);   
+  delay(Pour_Lime_juice);            
+  digitalWrite(Lime_juice_pump, HIGH); 
+  delay(wait);
+  
+  digitalWrite(Sugar_water_pump, LOW);   
+  delay(Pour_Sugar_water);            
+  digitalWrite(Sugar_water_pump, HIGH); 
+  delay(wait); 
+
+  digitalWrite(Gin_pump, LOW);   
+  delay(Pour_Gin);            
+  digitalWrite(Gin_pump, HIGH); 
+  delay(wait); 
+
+  digitalWrite(White_rum_pump, LOW);   
+  delay(Pour_White_rum);            
+  digitalWrite(White_rum_pump, HIGH); 
+  delay(wait);
+
+  digitalWrite(tequila_pump, LOW);   
+  delay(Pour_tequila);            
+  digitalWrite(tequila_pump, HIGH); 
+  delay(wait); 
+
+
+  Serial.println("Drink is done!"); 
+  order = 0; // Prevent repeting the same drink 
+
+  
+}
